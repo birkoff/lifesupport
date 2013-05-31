@@ -1,0 +1,7 @@
+<%= form_tag '', :method => 'get', :class => 'well form-search' do %>
+    <span id="page-title" class="lead space-right"><a>Clientes</a></span>
+    <%= text_field_tag :search, params[:search], :placeholder => 'escriba el criterio de búsqueda', :class => 'input-medium search-query' %>
+    <!--<button type="submit" class="btn"><i class="icon-search"></i></button> -->
+    <!--<button id="add-record" type="submit" class="btn"><i class="custom cus-add"></i></button> -->
+    <%= submit_tag "Buscar", :name => nil %>
+<% end %>

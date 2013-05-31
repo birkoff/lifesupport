@@ -1,0 +1,93 @@
+<div class="span span4">
+
+<div class="field">
+  <b>Cliente:</b>
+  <%= @cliente.id %>
+</div>
+
+<% if @cliente.parent_id %>
+<div class="field">
+  <b>Membresía:</b>
+  <%= @cliente.parent_id %>
+</div>
+<% end %>
+
+<div class="field">
+  <%= @cliente.nombre %>
+</div>
+<br/>
+<div class="field">
+  <%= @cliente.direccion %>
+</div>
+<div class="field">
+  Colonia
+  <%= @cliente.colonia %>
+</div>
+<div class="field">
+  Entre 
+  <%= @cliente.entre_calles %>
+</div>
+<div class="field">
+  Código Postal 
+  <%= @cliente.cp %>
+</div>
+
+<br/>
+
+<div class="field">
+  <%= @cliente.telefono %>
+</div>
+<div class="field">
+  <%= @cliente.ciudad %>
+</div>
+<div class="field">
+  <%= @cliente.estado %>
+</div>
+
+<br/>
+<div class="field">
+  <b>Razón Social:</b>
+  <%= @cliente.razon_social %>
+</div>
+
+<div class="field">
+  <b>RFC:</b>
+  <%= @cliente.rfc %>
+</div>
+
+<div class="field">
+  <b>Avisar:</b>
+  <%= @cliente.avisar %>
+</div>
+
+<div class="field">
+  <b>Servicio Médico:</b>
+  <%= @cliente.servicio_medico %>
+</div>
+
+<div class="field">
+  <b>Afiliación:</b>
+  <%= @cliente.afiliacion %>
+</div>
+
+<div class="field">
+  <b>Tipo Sanguíneo:</b>
+  <%= @cliente.tipo_sanguineo %>
+</div>
+
+<div class="field">
+  <b>Fecha de Nacimiento:</b>
+  <%= @cliente.fecha_nacimiento %>
+</div>
+
+<div class="field">
+  <b>Padecimientos:</b>
+  <%= @cliente.padecimientos %>
+</div>
+
+<div class="field">
+  <b>Alergias:</b>
+  <%= @cliente.alergias %>
+</div>
+
+</div>

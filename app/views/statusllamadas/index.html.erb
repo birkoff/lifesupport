@@ -1,0 +1,32 @@
+<div class="well form-search">
+
+<% if params[:do] == 'edit' %>
+  <%= form_for(@statusllamada) do |g| %>
+    <span id="page-title" class="lead space-right"><a>Status</a></span>
+    <div class="field">
+      <%= g.text_field :nombre, :class => 'input-medium search-query' %>
+      <%= g.submit 'update' %>
+      <%= link_to 'Borrar', @statusllamada, :confirm => 'Estas Seguro?', :method => :delete %>
+    </div>  
+    
+  <% end %>
+<% else %>
+
+  <%= form_for (@statusllamada) do |f| %>
+    <span id="page-title" class="lead space-right"><a>Status</a></span>
+    <%= f.text_field :nombre, :placeholder => 'escriba el destino', :class => 'input-medium search-query' %>
+    <%= f.submit "Agregar" %>
+  <% end %>
+  
+  <ul>
+    <% @statusllamadas.each do |status| %>
+    <li>
+      <a class="profile-link" href="?do=edit&amp;id=<%= status.id %>">
+        <i class="custom cus-user"></i><%= status.nombre %>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+  
+<% end %>
+</div>

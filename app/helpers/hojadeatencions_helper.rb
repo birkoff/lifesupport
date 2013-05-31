@@ -1,0 +1,2 @@
+module HojadeatencionsHelper
+end

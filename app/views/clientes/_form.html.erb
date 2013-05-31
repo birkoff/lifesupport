@@ -1,0 +1,100 @@
+<%= form_for(@cliente) do |f| %>
+  <% if @cliente.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cliente.errors.count, "error") %> prohibited this cliente from being saved:</h2>
+
+      <ul>
+      <% @cliente.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="span span4">
+  <tr><td>
+  <div class="field">
+    <%= f.label "Nombre del Cliente:" %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label "Teléfono:" %><br />
+    <%= f.text_field :telefono %>
+  </div>
+  <div class="field">
+    <%= f.label "Dirección:" %><br />
+    <%= f.text_field :direccion %>
+  </div>
+  <div class="field">
+    <%= f.label "Entre Calles:" %><br />
+    <%= f.text_field :entre_calles %>
+  </div>
+  <div class="field">
+    <%= f.label "Colonia:" %><br />
+    <%= f.text_field :colonia %>
+  </div>
+  <div class="field">
+    <%= f.label "Código Postal:" %><br />
+    <%= f.text_field :cp %>
+  </div>
+  <div class="field">
+    <%= f.label "Estado" %><br />
+    <%= render 'estados' %>
+    <!--<%= f.text_field :estado %>-->
+  </div>
+  <div class="field">
+    <%= f.label "Ciudad:" %><br />
+    <%= f.text_field :ciudad %>
+  </div>
+</div>
+<div class="span span4">
+  <div class="field">
+    <%= f.label "Razón Social:" %><br />
+    <%= f.text_field :razon_social %>
+  </div>
+  <div class="field">
+    <%= f.label "RFC:" %><br />
+    <%= f.text_field :rfc %>
+  </div>
+  <div class="field">
+    <%= f.label "Avisar:" %><br />
+    <%= f.text_field :avisar %>
+  </div>
+  <div class="field">
+    <%= f.label "Servicio Médico:" %><br />
+    <%= f.text_field :servicio_medico %>
+  </div>
+  <div class="field">
+    <%= f.label "Afiliación:" %><br />
+    <%= f.text_field :afiliacion %>
+  </div>
+  <div class="field">
+    <%= f.label "Tipo Sanguíneo:" %><br />
+    <%= f.text_field :tipo_sanguineo %>
+  </div>
+  <div class="field">
+    <%= f.label "Fecha de Nacimiento(aaaa/mm/dd):" %><br />
+    <%= f.text_field :fecha_nacimiento %>
+  </div>
+</div>
+<div class="span span4">
+  <div class="field">
+    <%= f.label "Padecimientos:" %><br />
+    <%= f.text_area :padecimientos %>
+  </div>
+  <div class="field">
+    <%= f.label "Alergias:" %><br />
+    <%= f.text_area :alergias %>
+  </div>
+    
+      <% if $is_afiliado %>
+        <%= f.hidden_field :parent_id, :value => $cid %>
+        <%= f.hidden_field :user_type, :value => 'afiliado' %>
+      <% end %>
+      <div class="actions">
+    <%= f.submit "Guardar", :class=>'btn' %>
+  </div>
+</div>
+  
+<% end %>
+

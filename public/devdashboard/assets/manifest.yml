@@ -1,0 +1,11 @@
+--- 
+application/index.js: application.js
+glyphicons-halflings/index.gif: glyphicons-halflings.gif
+application.css: application.css
+rails.png: rails.png
+glyphicons-halflings.gif: glyphicons-halflings.gif
+jquery/index.min.map: jquery.min.map
+application/index.css: application.css
+jquery.min.map: jquery.min.map
+application.js: application.js
+rails/index.png: rails.png

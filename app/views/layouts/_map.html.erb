@@ -1,0 +1,33 @@
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzUbqULUkUSV-ICTh9kK3BuMXAIL21jD0&amp;sensor=false&v=3"></script>
+<%
+if @map[0] then
+  latitude = @map[0].latitude  # => 25.4235607
+  longitude = @map[0].longitude  # =>  -100.9859354
+  address = @map[0].address  # =>  "Jose Maria la fragua 964, Zona Centro, 25000 Saltillo, Coahuila, Mexico"
+else
+  latitude = '25.4235607'
+  longitude = '-100.9859354'
+  address = "Jose Maria la fragua 964, Zona Centro, 25000 Saltillo, Coahuila, Mexico"
+end
+%>
+<script type="text/javascript">
+      function initialize() 
+      {
+        var myLatlng = new google.maps.LatLng(<%= latitude %>, <%= longitude %>);
+        var mapOptions = {
+          center: myLatlng,
+          zoom: 15,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),mapOptions);
+        var marker = new google.maps.Marker({position: myLatlng, title:"Hector es el mas Mejor!"});
+        marker.setMap(map);
+      }
+</script>
+<b4/>
+<p>
+  Latitude: <%= latitude %>
+  Longitude: <%= longitude %>
+  Direccion: <%= address %>
+</p>
+<div id="map_canvas"  style="background-color: rgb(229, 227, 223); height: 60%; width: 90%; overflow: auto; position: absolute;"></div>

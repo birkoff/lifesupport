@@ -1,0 +1,144 @@
+<%= form_for([@llamada, @llamada.hojadeatencions.new]) do |f| %>
+<div class="span span4">
+      <h3>Via Aerea</h3>
+      <div class="field">
+        Permeable <br />
+        <div class="field">
+        <%= f.radio_button :permeable, 'si' %>SI Aspiracion
+        <%= f.radio_button :permeable, 'no' %>NO Permeabilizacion Manual, Mecanica, blabla
+      </div>
+      </div>
+      <h3>Ventilacion</h3>
+      <div class="field">
+        saturacion_inicial<br />
+        <%= f.text_field :saturacion_inicial %>
+      </div>
+      <div class="field">
+        saturacion_final  <br />
+        <%= f.text_field :saturacion_final  %>
+      </div>
+      <h3>Circulacion</h3>
+      <div class="field">
+        coloracion_piel<br />
+        <%= f.text_field :coloracion_piel %>
+      </div>
+      <div class="field">
+        temperatura<br />
+        <%= f.text_field :temperatura %>
+      </div>
+      <div class="field">
+        llenado_capilar<br />
+        <%= f.text_field :llenado_capilar %>
+      </div>
+      <div class="field">
+        pulsos_perifericos<br />
+        <%= f.text_field :pulsos_perifericos %>
+      </div>
+      <h3>Signos Vitales</h3>
+      <table class="littlefields">
+        <tr><td>Hora</td><td>FC</td><td>FR</td><td>T/A</td><td>TEMP</td></tr>
+        <tr>
+          <td><input type="text" name="sv[hora1]" size="3" style="width:26px;"></td>
+          <td><input type="text" name="sv[fc1]" size="3"></td>
+          <td><input type="text" name="sv[fr1]" size="3"></td>
+          <td><input type="text" name="sv[ta1]" size="3"></td>
+          <td><input type="text" name="sv[temp1]" size="3"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="sv[hora2]" size="3"></td>
+          <td><input type="text" name="sv[fc2]" size="3"></td>
+          <td><input type="text" name="sv[fr2]" size="3"></td>
+          <td><input type="text" name="sv[ta2]" size="3"></td>
+          <td><input type="text" name="sv[temp2]" size="3"></td>
+        </tr>
+        <tr>
+          <td><input type="text" name="sv[hora2]" size="3"></td>
+          <td><input type="text" name="sv[fc2]" size="3"></td>
+          <td><input type="text" name="sv[fr2]" size="3"></td>
+          <td><input type="text" name="sv[ta2]" size="3"></td>
+          <td><input type="text" name="sv[temp2]" size="3"></td>
+        </tr>
+      </table>
+      
+ </div>
+
+<div class="span span4">     
+      <h3>Estado Neurologico</h3>
+      <div class="field">
+        en_alerta<br />
+        <%= f.text_field :en_alerta %>
+      </div>
+      <div class="field">
+        en_verbal<br />
+        <%= f.text_field :en_verbal %>
+      </div>
+      <div class="field">
+        en_dolor<br />
+        <%= f.text_field :en_dolor %>
+      </div>
+      <div class="field">
+        en_inconciencia<br />
+        <%= f.text_field :en_inconciencia %>
+      </div>
+      <h3>Estado Conciencia</h3>
+       <div class="field">
+        ec_persona<br />
+        <%= f.text_field :ec_persona %>
+      </div>
+      <div class="field">
+        ec_lugar<br />
+        <%= f.text_field :ec_lugar %>
+      </div>
+      <div class="field">
+        ec_tiempo <br />
+        <%= f.text_field :ec_tiempo  %>
+      </div>
+      <div class="field">
+        ec_ocular<br />
+        <%= f.text_field :ec_ocular  %>
+      </div>
+      <div class="field">
+        ec_verbal<br />
+        <%= f.text_field :ec_verbal  %>
+      </div>
+      <div class="field">
+        ec_motora <br />
+        <%= f.text_field :ec_motora  %>
+      </div>
+      <div class="field">
+        ec_clasgow <br />
+        <%= f.text_field :ec_clasgow    %>
+      </div>
+</div>
+
+<div class="span span4">    
+      <h3>Historia Clinica</h3>
+      <div class="field">
+        hc_alergia<br />
+        <%= f.text_field :hc_alergia %>
+      </div>
+      <div class="field">
+        hc_patologia<br />
+        <%= f.text_field :hc_patologia %>
+      </div>
+      <h3>Exploracion Fisica</h3>
+      <div class="field">
+        dolor<br />
+        <%= f.text_field :dolor %>
+      </div>
+      <h3>Impresion Diagnostica</h3>
+      <div class="field">
+        indicaciones<br />
+        <%= f.text_field :indicaciones %>
+      </div>
+      <div class="field">
+        manejo<br />
+        <%= f.text_field :manejo %>
+      </div>
+      <div class="field">
+        medico<br />
+        <%= f.text_field :medico %>
+      </div>
+      <%= f.submit :Guardar %>
+</div>
+<% end %>

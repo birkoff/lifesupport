@@ -1,0 +1,71 @@
+<%= form_tag '', :method => 'get', :class => 'well form-search' do %>
+<%
+
+status, servicio, prioridad, fecha = false
+statusllamada_id, servicio_id, prioridad_id, order = 0
+
+if params[:filter] then
+  filter = params[:filter]
+  case params[:filter][:name]
+    when 'status'
+         status = true
+         statusllamada_id = filter[:statusllamada_id]
+    when 'servicio'
+         servicio = true
+         servicio_id = filter[:servicio_id]
+    when 'prioridad'
+         prioridad = true
+         prioridad_id = filter[:prioridad_id]
+    when 'fecha'
+         fecha = true
+         order = filter[:order]
+  end
+end
+%>
+
+<table>
+  <tr>
+      <td><%= radio_button_tag 'filter[name]', 'status', status %>Status</td>
+      <td>
+        <select name="filter[statusllamada_id]" id="status">
+           <% @statusllamadas.each do |status| %><option value="<%= status.id %>" <%= 'selected' if statusllamada_id.to_i == (status.id).to_i %>><%= status.nombre %></option><% end %>
+        </select>
+      </td>
+
+      <td><%= radio_button_tag 'filter[name]', 'servicio', servicio %>Servicio</td>
+      <td>
+        <select name="filter[servicio_id]" id="status">
+            <% @servicios.each do |servicio| %>
+                <option value="<%= servicio.id %>" <%= 'selected' if servicio_id.to_i == servicio.id.to_i %>><%= servicio.nombre %></option>
+            <% end %>
+        </select>
+      </td>
+  </tr>
+  
+  <tr>
+      <td><%= radio_button_tag 'filter[name]', 'prioridad', prioridad %>Prioridad</td>
+      <td>
+          <table>
+          <tbody>
+            <tr>
+            <% @prioridads.each do |prioridad| %>
+            <td style="padding:10px;background-color:<%= prioridad.rgbcolor %>;">
+              <input name="filter[prioridad_id]" type="radio" value="<%= prioridad.id %>" <%= 'checked="true"' if prioridad_id.to_i == prioridad.id.to_i %>><%= prioridad.nombre %>
+            </td>
+            <% end %>
+           </tr>
+          </tbody>
+        </table>
+      </td>
+
+   <td><%= radio_button_tag 'filter[name]', 'fecha', fecha %>Fecha</td>
+   <td>
+      <select name="filter[order]" id="status">
+         <option value="ASC" <%= 'selected' if order == 'ASC' %>>Ascendente</option>
+         <option value="DESC" <%= 'selected' if order == 'DESC' %>>Descendente</option>
+      </select>
+    </td>
+  </tr>
+</table>
+<%= submit_tag "Aplicar", :name => nil %>
+<% end %>

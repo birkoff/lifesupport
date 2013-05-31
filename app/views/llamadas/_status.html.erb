@@ -1,0 +1,17 @@
+<% 
+  if llamada.status then
+    status = llamada.status
+  else
+    status = nil
+  end
+%>
+ <select name="llamada[status]" id="status">
+      <option value="Capturada" <%= if status == 'Capturada' then 'selected' end %>>Capturada</option>
+      <option value="Cancelada" <%= if status == 'Cancelada' then 'selected' end %>>Cancelada</option>
+      <option value="En el lugar" <%= if status == 'En el lugar' then 'selected' end %>>En el lugar</option>
+      <option value="En espera en hospital" <%= if status == 'En espera en hospital' then 'selected' end %>>En espera en hospital</option>
+      <option value="En Ruta" <%= if status == 'En Ruta' then 'selected' end %>>En Ruta</option>
+      <option value="Inicia Translado" <%= if status == 'Inicia Translado' then 'selected' end %>>Inicia Translado</option>
+      <option value="Libre" <%= if status == 'Libre' then 'selected' end %>>Libre</option>
+      <option value="Terminada" <%= if status == 'Terminada' then 'selected' end %>>Terminada</option>
+</select>

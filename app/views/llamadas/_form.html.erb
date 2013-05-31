@@ -1,0 +1,120 @@
+<%= form_for(@llamada) do |f| %>
+  <% if @llamada.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@llamada.errors.count, "error") %> prohibited this llamada from being saved:</h2>
+
+      <ul>
+      <% @llamada.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+<div class="span span4">
+      <div class="field">
+        Quién reporta <br />
+        <%= f.text_field :reporta %>
+      </div>
+      <div class="field">
+        Qué sucedió<br />
+        <%= f.text_area :reporte %>
+      </div>
+      <div class="field">
+        Ubicación del lesionado<br />
+        <%= f.text_area :ubicacion %>
+      </div>
+      <div class="field">
+        Teléfono<br />
+        <%= f.text_field :telefono %>
+      </div>
+</div>
+
+<div class="span span4">
+      <h3>Datos del lesionado</h3>
+      <div class="field">
+        Nombre<br />
+        <%= f.text_field :nombre %>
+      </div>
+      <div class="field">
+        Apellido Paterno<br />
+        <%= f.text_field :apaterno %>
+      </div>
+      <div class="field">
+        Apellido Materno<br />
+        <%= f.text_field :amaterno %>
+      </div>
+      <div class="field">
+        Edad (en años)<br />
+        <%= f.number_field :edad %>
+      </div>
+      <div class="field">
+        <%= f.radio_button :sexo, 'masculino' %>Masculino
+        <%= f.radio_button :sexo, 'femenino' %>Femenino
+      </div>
+</div>
+
+<div class="span span4">    
+      <div class="field">
+        <%= f.label :servicio %><br />
+        <select name="llamada[servicio_id]" id="status">
+            <option value="0">---</option>
+            <% @servicios.each do |servicio| %>
+                <option value="<%= servicio.id %>" <%= 'selected' if servicio.id == @llamada.servicio_id %>><%= servicio.nombre %></option>
+            <% end %>
+        </select>
+      </div>
+      
+      <div class="field">
+        <%= f.label :destino %><br />
+        <select name="llamada[destino_id]" id="destino">
+            <option value="0">---</option>
+            <% @destinos.each do |destino| %>
+                <option value="<%= destino.id %>" <%= 'selected' if destino.id == @llamada.destino_id %>><%= destino.nombre %></option>
+            <% end %>
+          </select>
+      </div>
+      
+      <div class="field">
+        <%= f.label :status %><br />
+          <select name="llamada[statusllamada_id]" id="status">
+          <% @statusllamadas.each do |status| %><option value="<%= status.id %>" <%= 'selected' if status.id == @llamada.statusllamada_id %>><%= status.nombre %></option><% end %>
+          </select>
+      </div>
+        
+      <div class="field">
+        <%= f.label :prioridad %><br />
+        <table>
+          <tbody>
+            <tr>
+            <% @prioridads.each do |prioridad| %>
+            <td style="padding:10px;background-color:<%= prioridad.rgbcolor %>;">
+              <input name="llamada[prioridad_id]" type="radio" value="<%= prioridad.id %>" <%= 'checked="true"' if prioridad.id == @llamada.prioridad_id %>><%= prioridad.nombre %>
+            </td>
+            <% end %>
+           </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <div class="field">
+        <%= f.label 'Ambulancias Asignadas' %><br />
+        <select name="llamada[ambulance_id]" id="ambulancia" multiple="true" size="5">
+            <option value="0">---</option>
+            <% @ambulances.each do |ambulance| %>
+            <option value="<%= ambulance.id %>" <%= 'selected' if ambulance.id == @llamada.ambulance_id %>><%= ambulance.nombre %></option>
+            <% end %>
+          </select>
+      </div>
+      
+      <div class="field">
+        Costo<br />
+        <%= f.text_field :costo %>
+      </div>
+      
+      <%= f.hidden_field :cliente_id, :value => @llamada.cliente_id %>
+      <div class="actions">
+        <%= f.submit 'Guardar', :class => 'btn' %>
+      </div>
+</div>
+<% end %>

@@ -1,0 +1,20 @@
+<div class="pull-right">
+        <%= link_to 'Regresar', llamadas_path, :class => 'btn' %>
+</div>
+
+<h2>Captura de Llamada</h2>
+
+<% if $do == 'create' %>
+<div class="row">
+   <%= render 'show_cliente' %>
+   <%= render 'form' %>
+</div>
+<% elsif $do == 'results'  %>
+
+    <%= render 'cliente' %>
+    <%= render 'results_clientes' %>
+
+<% else %>
+    <%= render 'cliente' %>
+
+<%  end %>

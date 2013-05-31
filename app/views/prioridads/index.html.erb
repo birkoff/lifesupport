@@ -1,0 +1,33 @@
+<div class="well form-search">
+
+<% if params[:do] == 'edit' %>
+  <%= form_for(@prioridad) do |g| %>
+    <span id="page-title" class="lead space-right"><a>Prioridades</a></span>
+    <div class="field">
+      <%= g.text_field :nombre, :class => 'input-medium search-query' %>
+      <%= g.text_field :rgbcolor, :class => 'input-medium search-query' %>
+      <%= g.submit 'update', :class => 'btn' %>
+      <%= link_to 'Borrar', @prioridad, :confirm => 'Estas Seguro?', :method => :delete, :class => 'btn' %>
+    </div>  
+    
+  <% end %>
+<% else %>
+
+  <%= form_for (@prioridad) do |f| %>
+    <span id="page-title" class="lead space-right"><a>Prioridades</a></span>
+    <%= f.text_field :nombre, :placeholder => 'escriba el destino', :class => 'input-medium search-query' %>
+    <%= f.submit "Agregar", :class => 'btn' %>
+  <% end %>
+  
+  <ul>
+    <% @prioridads.each do |prioridad| %>
+    <li>
+      <a class="profile-link" href="?do=edit&amp;id=<%= prioridad.id %>">
+        <div style="width:15px;padding:10px;background-color:<%= prioridad.rgbcolor %>"><%= prioridad.nombre %></div>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+  
+<% end %>
+</div>

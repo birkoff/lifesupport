@@ -1,0 +1,15 @@
+<div class="pull-right">
+        <%= link_to 'Crear Cliente', new_cliente_path, :class => 'btn' %>
+</div>
+
+<h2>Clientes</h2>
+
+<% if $do == 'results'  %>
+
+    <%= render 'search' %>
+    <%= render 'results' %>
+
+<% else %>
+    <%= render 'search' %>
+
+<%  end %>

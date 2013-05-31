@@ -1,0 +1,22 @@
+<div class="pull-right">
+   <% if @cliente.parent_id.nil? %>
+       <%= link_to 'Crear Afiliado', new_cliente_path(:afiliado => true, :id => @cliente.id), :class => 'btn' %>
+   <% else %>
+       <%= link_to 'Ver Cliente', "#{@cliente.parent_id}", :class => 'btn' %>
+   <% end %>
+   <%= link_to 'Eliminar', @cliente, :confirm => 'Seguro?', :method => :delete, :class => 'btn' %>
+   <%= link_to 'Regresar', clientes_path, :class => 'btn' %>
+</div>
+
+<h2><%= @cliente.parent_id ? 'Afiliado: ' : 'Cliente: ' %><%= @cliente.nombre %></h2>
+
+<div class="row">
+
+<%= render 'form' %>
+
+<% if !@afiliado.nil? and @afiliado.any? %>
+  <div class="span span4"><%= render 'afiliados' %></div>
+<% end %>
+
+</div>
+ <div style="min-height: 500px;"><br/><br/><%= render :partial => 'layouts/map' %></div>

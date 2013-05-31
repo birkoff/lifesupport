@@ -1,0 +1,64 @@
+<%= render :partial => 'llamadas/nav_menu' %>
+
+<h2>Bitacora de Llamada</h2>
+
+<table  cellspacing="0" cellpadding="4" border="0">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Fecha</th>
+    <th>Tiempo Transcurrido</th>
+    <th>Membresía</th>
+    <th>Ambulancia</th>
+    <th>Servicio</th>
+    <th>Prioridad</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+
+
+  <%
+    now = Time.new
+    predays = (now - @llamada.created_at)/1.day
+    days = predays.floor
+    prehours = (predays - days)*24
+    hours = prehours.floor
+    preminutes = (prehours-hours)*60
+    minutos = preminutes.floor
+    d = @llamada.created_at
+  %>
+  <tr>
+    <td><%=link_to @llamada.id, @llamada, :class => 'btn' %></td>
+    <td><%= d.strftime("%d/%b/%Y %I:%M%p") %></td>
+    <td><%= days %> dias, <%= hours %>H <%= minutos %>M</td>
+    <td><%= @llamada.cliente.nombre %></td>
+    <td><%= @llamada.ambulance.nombre if !@llamada.ambulance.nil? %></td>
+    <td><%= @llamada.servicio.nombre if !@llamada.servicio.nil? %></td>
+    <td>
+      <% if !@llamada.prioridad.nil? then %>
+        <div style="padding:10px;background-color:<%= @llamada.prioridad.rgbcolor %>"><%= @llamada.prioridad.nombre %></div>
+      <% end %>
+    </td>
+    <td><%= @llamada.statusllamada.nombre %></td>
+  </tr>
+
+</table>
+
+
+<table  cellspacing="0" cellpadding="4" border="0">
+  <thead>
+  <tr>
+    <th>Fecha</th>
+    <th>Status</th>
+    <th>Usuario</th>
+  </tr>
+  </thead>
+  <% @bitacora.each do |event| %>
+
+  <tr>
+    <td><%= event.date_updated.strftime("%d/%b/%Y %I:%M%p") %></td>
+    <td><%= event.statusllamada.nombre   %></td>
+    <td><%= event.user_id %></td>
+  </tr>
+  <% end %>
+</table>

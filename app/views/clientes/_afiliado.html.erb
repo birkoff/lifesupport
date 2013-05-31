@@ -1,0 +1,10 @@
+<h2>Afiliados</h2>
+<ul>
+  <% @afiliado.each do |afiliado| %>
+  <li>
+    <a class="profile-link" href="../?do=show&amp;afiliado_id=<%= afiliado.id %>">
+      <i class="custom cus-user"></i><%= afiliado.nombre %> (<%= afiliado.id %>)
+    </a>
+  </li>
+  <% end %>
+</ul>

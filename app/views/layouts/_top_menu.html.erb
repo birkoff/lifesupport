@@ -1,0 +1,17 @@
+<% if !session[:id].nil? %>
+<div id="account">
+   <ul>
+     <li><a class="my-account" href="">My account</a></li>
+     <li><%= link_to 'Sign out', {:controller=>"user", :action => "logout"}, :class => "logout" %></li>
+   </ul>    
+</div>
+
+
+<div id="loggedas">Logged in as <a class="user active" href=""><%= session[:user_name] %></a></div>
+<% end %>  
+<ul>
+  <li><a class="home" href="/">Home</a></li>
+  <li><a class="my-page" href="http://birkoff.net">My page</a></li>
+  <li><a class="projects" href="http://birkoff.net/blog">Blog</a></li>
+  <li><a class="help" href="http://birkoff.net">Help</a></li>
+</ul>

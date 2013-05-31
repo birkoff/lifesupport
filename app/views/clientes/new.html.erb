@@ -1,0 +1,9 @@
+<div class="pull-right">
+   <%= link_to 'Regresar', clientes_path, :class => 'btn' %>
+</div>
+
+<% if $is_afiliado %><h2>Crear afiliado - Membresia <%= $cid %></h1>
+<% else %>           <h2>Crear cliente</h1>
+<%  end %>
+
+<div class="row"><%= render 'form' %></div>

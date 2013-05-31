@@ -1,0 +1,9 @@
+--- 
+application.css: application.css
+jquery.min.map: jquery.min.map
+application/index.css: application.css
+application/index.js: application.js
+rails/index.png: rails.png
+application.js: application.js
+rails.png: rails.png
+jquery/index.min.map: jquery.min.map

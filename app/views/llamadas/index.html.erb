@@ -1,0 +1,61 @@
+<h3>Filtros</h3>
+<div id="filtros">
+    <%= render 'filtros' %>
+</div>
+
+<div class="pull-right">
+        <%= link_to 'Registrar Llamada', new_llamada_path, :class => 'btn' %>
+</div>
+
+<h2>Servicios Activos <%= @llamadas.count %></h2>
+
+<table  cellspacing="0" cellpadding="4" border="0">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Fecha</th>
+    <th>Tiempo Transcurrido</th>
+    <th>Membresía</th>
+    <th>Ambulancia</th>
+    <th>Servicio</th>
+    <th>Prioridad</th>
+    <th>Status</th>
+  </tr>
+  </thead>
+
+<% @llamadas.each do |llamada| %>
+  <%
+    now = Time.new
+    predays = (now - llamada.created_at)/1.day
+    days = predays.floor
+    prehours = (predays - days)*24
+    hours = prehours.floor
+    preminutes = (prehours-hours)*60
+    minutos = preminutes.floor
+    d = llamada.created_at
+  %>
+  <tr>
+    <td><%=link_to llamada.id, llamada, :class => 'btn' %></td>
+    <td><%= d.strftime("%d/%b/%Y %I:%M%p") %></td>
+    <td><%= days %> dias, <%= hours %>H <%= minutos %>M</td>
+    <td><%= llamada.cliente.nombre %></td>
+    <td><%= llamada.ambulance.nombre if !llamada.ambulance.nil? %></td>
+    <td><%= llamada.servicio.nombre if !llamada.servicio.nil? %></td>
+    <td>
+      <% if !llamada.prioridad.nil? then %>
+        <div style="padding:10px;background-color:<%= llamada.prioridad.rgbcolor %>"><%= llamada.prioridad.nombre %></div>
+      <% end %>
+    </td>
+    <td>
+      <%= form_for(llamada) do |f| %>
+           <select name="llamada[statusllamada_id]" id="status">
+              <% @statusllamadas.each do |status| %><option value="<%= status.id %>" <%= 'selected' if status.id == llamada.statusllamada_id %>><%= status.nombre %></option><% end %>
+          </select>
+          <input type="hidden" name="redirect" value="index" />
+          <%= f.submit 'update' %>
+      <% end %>
+    </td>
+  </tr>
+<% end %>
+
+</table>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <title>Lifesupport</title>
+  <%= stylesheet_link_tag    "application" %>
+  <!-- javascript_include_tag "application" -->
+  <%= csrf_meta_tags %>
+</head>
+<body onload="initialize()">
+  <div id="wrapper">
+      <div id="wrapper3">
+        <div id="top-menu">
+           <%= render :partial => 'layouts/top_menu' %>
+        </div>
+        <div class="header">
+          <h1>Life Support</h1>
+              <% if !session[:id].nil? %>
+              <div id="main-menu">
+                 <%= render :partial => 'layouts/main_menu' %>
+              </div>
+              <% end %>
+        </div>
+     
+        <div class="main-content">
+          <% if flash[:notice] %><div id="notice"><%= flash[:notice] %></div><% end %>
+          <% if flash[:error] %><div id="error"><%= flash[:error] %></div><% end %>
+          
+          <%= yield %>
+        </div>
+    </div>
+  </div>
+</body>
+</html>

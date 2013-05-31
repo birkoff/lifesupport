@@ -1,0 +1,28 @@
+<%
+current = params[:page].to_i
+if current == 0 then 
+      current = 1
+end
+anterior = current.to_i - 1
+siguiente = current.to_i + 1
+%>
+Clientes : <%= $num_rows %>
+<div class="pull-right">
+   <% if anterior > 0 %>
+     <%= link_to 'Anterior', "?search=#{params[:search]}&page=#{anterior}", :class => 'btn' %>
+   <% end %>
+   <%= current %> de <%= $num_pages %>
+   <% if current <  $num_pages %>
+     <%= link_to 'Siguiente', "?search=#{params[:search]}&page=#{siguiente}", :class => 'btn' %>
+   <% end %>
+</div>
+<br/>
+<ul>
+  <% @clientes.each do |cliente| %>
+  <li>
+    <a class="profile-link" href="?do=create&amp;cliente_id=<%= cliente.id %>">
+      <i class="custom cus-user"></i><%= cliente.nombre %> (<%= cliente.id %>)
+    </a>
+  </li>
+  <% end %>
+</ul>

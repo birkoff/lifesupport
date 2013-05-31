@@ -1,0 +1,32 @@
+<div class="well form-search">
+
+<% if params[:do] == 'edit' %>
+  <%= form_for(@servicio) do |g| %>
+    <span id="page-title" class="lead space-right"><a>Servicios</a></span>
+    <div class="field">
+      <%= g.text_field :nombre, :class => 'input-medium search-query' %>
+      <%= g.submit 'update', :class => 'btn' %>
+      <%= link_to 'Borrar', @servicio, :confirm => 'Estas Seguro?', :method => :delete, :class => 'btn' %>
+    </div>  
+    
+  <% end %>
+<% else %>
+
+  <%= form_for (@servicio) do |f| %>
+    <span id="page-title" class="lead space-right"><a>Servicios</a></span>
+    <%= f.text_field :nombre, :placeholder => 'escriba el servicio', :class => 'input-medium search-query' %>
+    <%= f.submit "Agregar", :class => 'btn' %>
+  <% end %>
+  
+  <ul>
+    <% @servicios.each do |servicio| %>
+    <li>
+      <a class="profile-link" href="?do=edit&amp;id=<%= servicio.id %>">
+        <i class="custom cus-user"></i><%= servicio.nombre %>
+      </a>
+    </li>
+    <% end %>
+  </ul>
+  
+<% end %>
+</div>

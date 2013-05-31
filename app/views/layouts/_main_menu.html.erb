@@ -1,0 +1,43 @@
+<ul>
+                 <% if params[:controller] == "clientes" then %>
+                  <li><%= link_to 'Clientes', {:controller => "clientes", :action => "index"}, :class => "selected" %> </li>
+                <% else %>
+                  <li><%= link_to 'Clientes', {:controller => "clientes", :action => "index"} %> </li>
+                <% end %>
+                
+                 <% if params[:controller] == "llamadas" or params[:controller] == "hojadeatencions" or params[:controller] == "bitacoras" then %>
+                  <li><%= link_to 'Llamadas', {:controller => "llamadas", :action => "index"}, :class => "selected" %> </li>
+                 <% else %>
+                  <li><%= link_to 'Llamadas', {:controller => "llamadas", :action => "index"} %></li>
+                 <% end %>
+                
+                 <% if params[:controller] == "ambulances" then %>
+                  <li><%= link_to 'Ambulancias', {:controller => "ambulances", :action => "index"}, :class => "selected" %> </li>
+                 <% else %>
+                  <li><%= link_to 'Ambulancias', {:controller => "ambulances", :action => "index"} %></li>
+                 <% end %>
+                
+                 <% if params[:controller] == "destinos" then %>
+                  <li><%= link_to 'Destinos', {:controller => "destinos", :action => "index"}, :class => "selected" %> </li>
+                 <% else %>
+                  <li><%= link_to 'Destinos', {:controller => "destinos", :action => "index"} %></li>
+                 <% end %>
+                
+                 <% if params[:controller] == "servicios" then %>
+                  <li><%= link_to 'Servicios', {:controller => "servicios", :action => "index"}, :class => "selected" %> </li>
+                 <% else %>
+                  <li><%= link_to 'Servicios', {:controller => "servicios", :action => "index"} %></li>
+                 <% end %>
+                
+                 <% if params[:controller] == "statusllamadas" then %>
+                  <li><%= link_to 'Status de Llamadas', {:controller => "statusllamadas", :action => "index"}, :class => "selected" %> </li>
+                 <% else %>
+                  <li><%= link_to 'Status de Llamadas', {:controller => "statusllamadas", :action => "index"} %></li>
+                 <% end %>
+                 
+                 <% if params[:controller] == "prioridads" then %>
+                  <li><%= link_to 'Prioridades', {:controller => "prioridads", :action => "index"}, :class => "selected" %> </li>
+                 <% else %>
+                  <li><%= link_to 'Prioridades', {:controller => "prioridads", :action => "index"} %></li>
+                 <% end %>
+</ul>
